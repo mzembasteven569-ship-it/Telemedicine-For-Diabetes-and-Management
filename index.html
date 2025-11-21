@@ -1,43 +1,226 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Telemed — Diabetes & Hypertension Management</title>
   <style>
-    *{box-sizing:border-box;font-family:Segoe UI, Roboto, Arial, sans-serif}
-    body{margin:0;background:#f4f6f8;color:#222}
-    .site-header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#1f6feb;color:#fff}
-    .brand{font-weight:700}
-    .nav-actions .btn{margin-left:8px}
-    .btn{background:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
-    .btn-primary{background:#1f6feb;color:#fff}
-    .btn-outline{background:#fff;border:1px solid #ddd}
-    .btn-sm{padding:6px 8px;font-size:13px}
-    .home-hero{padding:40px;text-align:center}
-    .card{background:#fff;border-radius:8px;padding:16px;margin:20px}
-    .page-header{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
-    .search-box input{padding:8px;border-radius:6px;border:1px solid #ddd}
-    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:40}
-    .table-responsive{overflow:auto}
-    .data-table{width:100%;border-collapse:collapse}
-    .data-table th,.data-table td{padding:8px;border-bottom:1px solid #eee;text-align:left}
-    .modal{background:#fff;padding:16px;border-radius:8px;min-width:300px;max-width:900px}
-    .modal.large{max-width:1000px}
-    .modal-header{display:flex;justify-content:space-between;align-items:center}
-    .form-row{display:flex;gap:8px}
-    .form-group{flex:1;display:flex;flex-direction:column;margin:8px 0}
-    .form-group input, .form-group select, .form-group textarea{padding:8px;border:1px solid #ccc;border-radius:6px}
-    .modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
-    .badge{padding:4px 8px;border-radius:999px;background:#eee}
-    .big-cross{width:140px;height:140px;border-radius:12px;background:#1f6feb;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:80px;font-weight:800;box-shadow:0 6px 20px rgba(31,111,235,0.18)}
-    .dashboard-btn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18);padding:8px 12px;border-radius:8px}
-    .home-layout{display:flex;gap:20px;align-items:flex-start;justify-content:center;padding:18px}
-    .services-column{width:220px}
-    .service-item{display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;margin-bottom:8px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
-    .service-icon{width:44px;height:44px;border-radius:8px;background:#1f6feb;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
-    .service-label{font-weight:600;color:#222}
-    
+    * {
+      box-sizing: border-box;
+      font-family: Segoe UI, Roboto, Arial, sans-serif
+    }
+
+    body {
+      margin: 0;
+      background: #f4f6f8;
+      color: #222
+    }
+
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #1f6feb;
+      color: #fff
+    }
+
+    .brand {
+      font-weight: 700
+    }
+
+    .nav-actions .btn {
+      margin-left: 8px
+    }
+
+    .btn {
+      background: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer
+    }
+
+    .btn-primary {
+      background: #1f6feb;
+      color: #fff
+    }
+
+    .btn-outline {
+      background: #fff;
+      border: 1px solid #ddd
+    }
+
+    .btn-sm {
+      padding: 6px 8px;
+      font-size: 13px
+    }
+
+    .home-hero {
+      padding: 40px;
+      text-align: center
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0
+    }
+
+    .search-box input {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ddd
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 40
+    }
+
+    .table-responsive {
+      overflow: auto
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+      text-align: left
+    }
+
+    .modal {
+      background: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      min-width: 300px;
+      max-width: 900px
+    }
+
+    .modal.large {
+      max-width: 1000px
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .form-row {
+      display: flex;
+      gap: 8px
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin: 8px 0
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 12px
+    }
+
+    .badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eee
+    }
+
+    .big-cross {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      background: #1f6feb;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      font-weight: 800;
+      box-shadow: 0 6px 20px rgba(31, 111, 235, 0.18)
+    }
+
+    .dashboard-btn {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 8px 12px;
+      border-radius: 8px
+    }
+
+    .home-layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 18px
+    }
+
+    .services-column {
+      width: 220px
+    }
+
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04)
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: #1f6feb;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px
+    }
+
+    .service-label {
+      font-weight: 600;
+      color: #222
+    }
+
     /* New styles for enhanced UI */
     .hero-section {
       background: linear-gradient(135deg, #1f6feb 0%, #2d8cff 100%);
@@ -47,12 +230,14 @@
       border-radius: 0 0 20px 20px;
       margin-bottom: 40px;
     }
+
     .hero-title {
       font-size: 1.8rem;
       margin-bottom: 16px;
       font-weight: 800;
       line-height: 1.3;
     }
+
     .hero-subtitle {
       font-size: 1rem;
       margin-bottom: 30px;
@@ -62,6 +247,7 @@
       opacity: 0.9;
       line-height: 1.5;
     }
+
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -70,17 +256,20 @@
       max-width: 1200px;
       margin: 0 auto 40px;
     }
+
     .feature-card {
       background: white;
       border-radius: 12px;
       padding: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       text-align: center;
       transition: transform 0.3s ease;
     }
+
     .feature-card:hover {
       transform: translateY(-5px);
     }
+
     .feature-icon {
       width: 60px;
       height: 60px;
@@ -93,15 +282,18 @@
       margin: 0 auto 16px;
       font-size: 24px;
     }
+
     .feature-title {
       font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 12px;
     }
+
     .feature-description {
       color: #666;
       line-height: 1.5;
     }
+
     .workflow-steps {
       display: flex;
       justify-content: center;
@@ -110,15 +302,17 @@
       margin: 40px 0;
       padding: 0 20px;
     }
+
     .step {
       display: flex;
       align-items: center;
       background: white;
       padding: 16px 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       max-width: 300px;
     }
+
     .step-number {
       width: 36px;
       height: 36px;
@@ -132,9 +326,11 @@
       font-weight: 700;
       flex-shrink: 0;
     }
+
     .step-text {
       font-weight: 600;
     }
+
     .consultation-code {
       background: #e6f7ff;
       border: 1px solid #91d5ff;
@@ -146,15 +342,29 @@
       font-size: 1.2rem;
       color: #1f6feb;
     }
+
     .status-badge {
       padding: 4px 12px;
       border-radius: 20px;
       font-size: 12px;
       font-weight: 600;
     }
-    .status-pending { background: #fff7e6; color: #fa8c16; }
-    .status-completed { background: #f6ffed; color: #52c41a; }
-    .status-in-progress { background: #e6f7ff; color: #1890ff; }
+
+    .status-pending {
+      background: #fff7e6;
+      color: #fa8c16;
+    }
+
+    .status-completed {
+      background: #f6ffed;
+      color: #52c41a;
+    }
+
+    .status-in-progress {
+      background: #e6f7ff;
+      color: #1890ff;
+    }
+
     .notification-banner {
       background: #fff7e6;
       border: 1px solid #ffd591;
@@ -164,115 +374,145 @@
       display: flex;
       align-items: center;
     }
+
     .notification-icon {
       margin-right: 12px;
       color: #fa8c16;
       font-size: 20px;
     }
+
     .notification-text {
       flex: 1;
     }
+
     .notification-title {
       font-weight: 600;
       margin-bottom: 4px;
     }
+
     .notification-desc {
       color: #666;
       font-size: 14px;
     }
-    
+
     /* Mobile Responsive Styles */
     @media (max-width: 768px) {
       .site-header {
         padding: 10px 15px;
         flex-wrap: wrap;
       }
+
       .site-header h1 {
         font-size: 16px;
         margin: 8px 0;
       }
+
       .hero-section {
         padding: 30px 15px;
       }
+
       .hero-title {
         font-size: 1.5rem;
       }
+
       .hero-subtitle {
         font-size: 0.9rem;
       }
+
       .features-grid {
         grid-template-columns: 1fr;
         padding: 0 15px;
         gap: 15px;
       }
+
       .feature-card {
         padding: 20px;
       }
+
       .workflow-steps {
         flex-direction: column;
         align-items: center;
         padding: 0 15px;
       }
+
       .step {
         max-width: 100%;
         width: 100%;
       }
+
       .page-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
       }
+
       .form-row {
         flex-direction: column;
       }
+
       .modal {
         margin: 20px;
         width: calc(100% - 40px);
       }
+
       .table-responsive {
         font-size: 14px;
       }
-      .data-table th, .data-table td {
+
+      .data-table th,
+      .data-table td {
         padding: 6px 4px;
       }
+
       .home-actions {
         flex-direction: column;
         gap: 10px;
       }
+
       .home-actions .btn {
         width: 100%;
       }
     }
-    
+
     @media (max-width: 480px) {
       .big-cross {
         width: 100px;
         height: 100px;
         font-size: 60px;
       }
+
       .hero-title {
         font-size: 1.3rem;
       }
+
       .card {
         margin: 10px;
         padding: 12px;
       }
-      .btn { padding: 12px 16px; font-size: 16px; }
+
+      .btn {
+        padding: 12px 16px;
+        font-size: 16px;
+      }
     }
-    
+
     /* Loading and error states */
     .loading {
       display: inline-block;
       width: 20px;
       height: 20px;
-      border: 3px solid rgba(255,255,255,.3);
+      border: 3px solid rgba(255, 255, 255, .3);
       border-radius: 50%;
       border-top-color: #fff;
       animation: spin 1s ease-in-out infinite;
     }
+
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
+
     .error-message {
       color: #ff4d4f;
       background: #fff2f0;
@@ -281,6 +521,7 @@
       border-radius: 6px;
       margin: 10px 0;
     }
+
     .success-message {
       color: #52c41a;
       background: #f6ffed;
@@ -291,6 +532,7 @@
     }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <div style="display:flex;align-items:center;gap:16px;width:100%;">
@@ -298,8 +540,10 @@
         <button class="dashboard-btn" id="dashboard-btn">Dashboard</button>
       </div>
       <div style="flex:1;text-align:center;padding:12px;">
-        <h1 style="margin:0;color:#fff;font-size:20px;line-height:1.2;font-weight:800;display:inline-block">Telemedicine for Diabetes and Hypertension Management</h1>
-        <button class="btn btn-primary" id="header-action" style="margin-left:12px;padding:8px 12px;font-size:14px">Learn More</button>
+        <h1 style="margin:0;color:#fff;font-size:20px;line-height:1.2;font-weight:800;display:inline-block">Telemedicine
+          for Diabetes and Hypertension Management</h1>
+        <button class="btn btn-primary" id="header-action"
+          style="margin-left:12px;padding:8px 12px;font-size:14px">Learn More</button>
       </div>
       <div style="flex:0 0 auto;text-align:right;padding-right:8px;">
         <button class="btn btn-outline" id="logout-btn" style="display:none">Logout</button>
@@ -345,6 +589,72 @@
         this.currentRole = localStorage.getItem('telemed_role') || null;
         this.currentUser = null;
         this.isDemoMode = false; // Now using Supabase
+        this.queueKey = 'telemed_offline_queue';
+
+        // Attempt to process any queued offline operations when the app comes online
+        window.addEventListener('online', () => this.processQueue());
+      }
+
+      isOnline() {
+        return typeof navigator !== 'undefined' ? navigator.onLine : true;
+      }
+
+      enqueueOperation(op) {
+        try {
+          const q = JSON.parse(localStorage.getItem(this.queueKey) || '[]');
+          q.push(op);
+          localStorage.setItem(this.queueKey, JSON.stringify(q));
+        } catch (e) {
+          console.error('Failed to enqueue operation', e);
+        }
+      }
+
+      async processQueue() {
+        if (!this.isOnline()) return;
+        if (!supabase) return; // can't sync without supabase client
+
+        const q = JSON.parse(localStorage.getItem(this.queueKey) || '[]');
+        if (!q || q.length === 0) return;
+
+        const remaining = [];
+        for (const op of q) {
+          try {
+            switch (op.type) {
+              case 'create_patient':
+                await supabase.from('patients').insert([op.payload.patient]);
+                if (op.payload.consultation) await supabase.from('consultations').insert([op.payload.consultation]);
+                break;
+              case 'create_consultation':
+                await supabase.from('consultations').insert([op.payload.consultation]);
+                break;
+              case 'update_consultation':
+                await supabase.from('consultations').update(op.payload.updates).eq('consultation_code', op.payload.consultation_code);
+                break;
+              case 'dispense':
+                await supabase.from('consultations').update(op.payload).eq('consultation_code', op.meta.consultation_code);
+                break;
+              case 'signup': {
+                const { email, password, name, role } = op.payload;
+                const { data, error } = await supabase.auth.signUp({ email, password });
+                if (error) throw error;
+                const userId = data.user?.id;
+                if (userId) {
+                  await supabase.from('profiles').upsert({ id: userId, full_name: name, role, created_at: new Date().toISOString() });
+                }
+                break;
+              }
+              default:
+                console.warn('Unknown queued op type', op.type);
+                break;
+            }
+          } catch (e) {
+            console.warn('Failed to sync op, keeping for later', e, op);
+            remaining.push(op);
+          }
+        }
+
+        if (remaining.length) localStorage.setItem(this.queueKey, JSON.stringify(remaining)); else localStorage.removeItem(this.queueKey);
+        if (remaining.length === 0) this.showSuccessMessage('Offline queue synchronized');
       }
 
       async showWelcomePage() {
@@ -408,6 +718,9 @@
           <div id="modal-container"></div>
           <footer style="text-align:center;padding:18px 10px;margin-top:18px;color:#1f6feb;font-weight:700">2025 © Steven Mzemba — Telemedicine for Diabetes and Hypertension Management</footer>
         `;
+        // Hide dashboard button on the public welcome page
+        const dashBtn = document.getElementById('dashboard-btn');
+        if (dashBtn) dashBtn.style.display = 'none';
 
         this.attachAuthListeners();
       }
@@ -444,15 +757,15 @@
           const originalText = submitBtn.innerHTML;
           submitBtn.innerHTML = '<div class="loading"></div>';
           submitBtn.disabled = true;
-          
+
           const fd = new FormData(e.target);
           const email = fd.get('email');
           const password = fd.get('password');
-          
+
           try {
             const { data, error } = await supabase.auth.signInWithPassword({ email, password });
             if (error) throw error;
-            
+
             const userId = data.user?.id;
             let role = null;
             if (userId) {
@@ -461,11 +774,11 @@
                 .select('role')
                 .eq('id', userId)
                 .single();
-                
+
               if (profileError) throw profileError;
               role = profile?.role || null;
             }
-            
+
             if (role) {
               localStorage.setItem('telemed_role', role);
               this.currentRole = role;
@@ -479,7 +792,11 @@
               throw new Error('User role not found');
             }
           } catch (err) {
-            this.showError('login-error', 'Login error: ' + (err.message || err));
+            if (!this.isOnline() || !supabase) {
+              this.showError('login-error', 'Login failed: offline or no API available. Please connect to the internet and try again.');
+            } else {
+              this.showError('login-error', 'Login error: ' + (err.message || err));
+            }
           } finally {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
@@ -523,32 +840,32 @@
           const originalText = submitBtn.innerHTML;
           submitBtn.innerHTML = '<div class="loading"></div>';
           submitBtn.disabled = true;
-          
+
           const fd = new FormData(e.target);
           const name = fd.get('name');
           const email = fd.get('email');
           const password = fd.get('password');
           const role = fd.get('role');
-          
+
           try {
             const { data, error } = await supabase.auth.signUp({ email, password });
             if (error) throw error;
-            
+
             const userId = data.user?.id;
             if (userId) {
               // Create profile with role
               const { error: profileError } = await supabase
                 .from('profiles')
-                .upsert({ 
-                  id: userId, 
-                  full_name: name, 
+                .upsert({
+                  id: userId,
+                  full_name: name,
                   role,
                   created_at: new Date().toISOString()
                 });
-                
+
               if (profileError) throw profileError;
             }
-            
+
             localStorage.setItem('telemed_role', role);
             this.currentRole = role;
             this.currentUser = data.user;
@@ -558,7 +875,20 @@
             this.showSuccessMessage('Signed up successfully as ' + role + '. Check your email for confirmation if required.');
             this.loadDashboard();
           } catch (err) {
-            this.showError('signup-error', 'Signup error: ' + (err.message || err));
+            // If offline or supabase not initialized, enqueue signup to sync later
+            if (!this.isOnline() || !supabase) {
+              this.enqueueOperation({ type: 'signup', payload: { name, email, password, role } });
+              localStorage.setItem('telemed_role', role);
+              this.currentRole = role;
+              this.currentUser = null;
+              document.querySelector('.modal-overlay.active')?.remove();
+              const logoutBtnEl = document.getElementById('logout-btn');
+              if (logoutBtnEl) logoutBtnEl.style.display = 'block';
+              this.showSuccessMessage('Signed up locally; account will be created when online.');
+              this.loadDashboard();
+            } else {
+              this.showError('signup-error', 'Signup error: ' + (err.message || err));
+            }
           } finally {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
@@ -568,6 +898,9 @@
 
       loadDashboard() {
         const role = this.currentRole;
+        // Ensure dashboard button visible when user is authenticated
+        const dashBtn = document.getElementById('dashboard-btn');
+        if (dashBtn) dashBtn.style.display = 'inline-block';
         if (role === 'cashier') {
           this.showCashierDashboard();
         } else if (role === 'provider') {
@@ -614,7 +947,7 @@
           
           <div id="modal-container"></div>
         `;
-        
+
         this.loadTodayPatients();
         document.getElementById('register-patient-btn').addEventListener('click', () => this.showCashierModal());
         document.getElementById('existing-patient-btn').addEventListener('click', () => this.showExistingPatientModal());
@@ -652,7 +985,7 @@
           
           <div id="modal-container"></div>
         `;
-        
+
         this.loadProviderPatients();
         document.getElementById('view-patients-btn').addEventListener('click', () => this.loadProviderPatients());
       }
@@ -689,7 +1022,7 @@
           
           <div id="modal-container"></div>
         `;
-        
+
         this.loadPharmacyPatients();
         document.getElementById('refresh-pharmacy-btn').addEventListener('click', () => this.loadPharmacyPatients());
       }
@@ -737,7 +1070,7 @@
           
           <div id="modal-container"></div>
         `;
-        
+
         this.loadAdminPatients();
         document.getElementById('schedule-visits-btn').addEventListener('click', () => this.showSchedulingModal());
         document.getElementById('view-all-patients-btn').addEventListener('click', () => this.loadAdminPatients());
@@ -822,11 +1155,11 @@
       async handleCashierSubmit(e) {
         e.preventDefault();
         const fd = new FormData(e.target);
-        
+
         // Generate patient code and consultation code
         const patientCode = 'PT' + Date.now().toString().slice(-6);
         const consultationCode = 'CONS' + Date.now().toString().slice(-6);
-        
+
         const patientData = {
           patient_code: patientCode,
           first_name: fd.get('first_name'),
@@ -841,7 +1174,18 @@
           status: 'active',
           created_at: new Date().toISOString()
         };
-        
+
+        const consultationData = {
+          patient_code: patientCode,
+          consultation_code: consultationCode,
+          consultation_date: new Date().toISOString().split('T')[0],
+          status: 'awaiting_provider',
+          provider_notes: '',
+          medications: [],
+          pharmacy_status: 'pending',
+          created_at: new Date().toISOString()
+        };
+
         try {
           // Insert patient into database
           const { data: patient, error: patientError } = await supabase
@@ -849,30 +1193,28 @@
             .insert([patientData])
             .select()
             .single();
-            
+
           if (patientError) throw patientError;
-          
+
           // Create initial consultation record
-          const consultationData = {
-            patient_code: patientCode,
-            consultation_code: consultationCode,
-            consultation_date: new Date().toISOString().split('T')[0],
-            status: 'awaiting_provider',
-            provider_notes: '',
-            medications: [],
-            pharmacy_status: 'pending',
-            created_at: new Date().toISOString()
-          };
-          
           const { error: consultationError } = await supabase
             .from('consultations')
             .insert([consultationData]);
-            
+
           if (consultationError) throw consultationError;
-          
+
           this.showConsultationCode(consultationCode, patientData);
-        } catch(err) {
-          alert('Error saving patient: ' + (err.message || err));
+        } catch (err) {
+          if (!this.isOnline() || !supabase) {
+            // Save locally to sync later
+            this.enqueueOperation({ type: 'create_patient', payload: { patient: patientData, consultation: consultationData } });
+            this.showConsultationCode(consultationCode, patientData);
+            this.showSuccessMessage('Saved locally — will sync when online. Consultation code: ' + consultationCode);
+            document.querySelector('.modal-overlay.active')?.remove();
+            this.showCashierDashboard();
+          } else {
+            alert('Error saving patient: ' + (err.message || err));
+          }
         }
       }
 
@@ -880,10 +1222,21 @@
         e.preventDefault();
         const fd = new FormData(e.target);
         const patientCode = fd.get('patient_code');
-        
+
         // Generate new consultation code for existing patient
         const consultationCode = 'CONS' + Date.now().toString().slice(-6);
-        
+
+        const consultationData = {
+          patient_code: patientCode,
+          consultation_code: consultationCode,
+          consultation_date: new Date().toISOString().split('T')[0],
+          status: 'awaiting_provider',
+          provider_notes: '',
+          medications: [],
+          pharmacy_status: 'pending',
+          created_at: new Date().toISOString()
+        };
+
         try {
           // Get patient details
           const { data: patient, error: patientError } = await supabase
@@ -891,30 +1244,26 @@
             .select('*')
             .eq('patient_code', patientCode)
             .single();
-            
+
           if (patientError) throw patientError;
-          
-          // Create consultation record
-          const consultationData = {
-            patient_code: patientCode,
-            consultation_code: consultationCode,
-            consultation_date: new Date().toISOString().split('T')[0],
-            status: 'awaiting_provider',
-            provider_notes: '',
-            medications: [],
-            pharmacy_status: 'pending',
-            created_at: new Date().toISOString()
-          };
-          
+
           const { error: consultationError } = await supabase
             .from('consultations')
             .insert([consultationData]);
-            
+
           if (consultationError) throw consultationError;
-          
+
           this.showConsultationCode(consultationCode, patient);
-        } catch(err) {
-          alert('Error: ' + (err.message || err));
+        } catch (err) {
+          if (!this.isOnline() || !supabase) {
+            // Enqueue consultation for later sync
+            this.enqueueOperation({ type: 'create_consultation', payload: { consultation: consultationData } });
+            this.showConsultationCode(consultationCode, { first_name: '', last_name: '', chronic_type: '' });
+            this.showSuccessMessage('Consultation saved locally — will sync when online.');
+            document.querySelector('.modal-overlay.active')?.remove();
+          } else {
+            alert('Error: ' + (err.message || err));
+          }
         }
       }
 
@@ -941,8 +1290,14 @@
       }
 
       async loadTodayPatients() {
+        if (!supabase) {
+          console.warn('Supabase client not available — cannot load today patients');
+          const tbody = document.getElementById('today-patients-tbody');
+          if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Offline — data will load when online</td></tr>';
+          return;
+        }
         const today = new Date().toISOString().split('T')[0];
-        
+
         try {
           const { data, error } = await supabase
             .from('consultations')
@@ -958,11 +1313,11 @@
               )
             `)
             .eq('consultation_date', today);
-            
+
           if (error) throw error;
-          
+
           this.renderTodayPatients(data);
-        } catch(err) {
+        } catch (err) {
           console.error('Error loading today patients:', err);
         }
       }
@@ -985,8 +1340,14 @@
       }
 
       async loadProviderPatients() {
+        if (!supabase) {
+          console.warn('Supabase client not available — cannot load provider patients');
+          const tbody = document.getElementById('provider-patients-tbody');
+          if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Offline — data will load when online</td></tr>';
+          return;
+        }
         const today = new Date().toISOString().split('T')[0];
-        
+
         try {
           const { data, error } = await supabase
             .from('consultations')
@@ -1003,11 +1364,11 @@
             `)
             .eq('consultation_date', today)
             .eq('status', 'awaiting_provider');
-            
+
           if (error) throw error;
-          
+
           this.renderProviderPatients(data);
-        } catch(err) {
+        } catch (err) {
           console.error('Error loading provider patients:', err);
         }
       }
@@ -1092,7 +1453,7 @@
             </div>
           </div>
         `;
-        
+
         document.getElementById('provider-consultation-form').addEventListener('submit', this.handleProviderConsultationSubmit.bind(this));
       }
 
@@ -1121,12 +1482,12 @@
         e.preventDefault();
         const fd = new FormData(e.target);
         const consultationCode = fd.get('consultation_code');
-        
+
         // Collect medications
         const medicationNames = fd.getAll('medication_name[]');
         const medicationDosages = fd.getAll('medication_dosage[]');
         const medicationQuantities = fd.getAll('medication_quantity[]');
-        
+
         const medications = [];
         for (let i = 0; i < medicationNames.length; i++) {
           if (medicationNames[i]) {
@@ -1137,7 +1498,7 @@
             });
           }
         }
-        
+
         const consultationData = {
           blood_pressure: fd.get('blood_pressure'),
           blood_glucose: fd.get('blood_glucose') ? parseInt(fd.get('blood_glucose')) : null,
@@ -1148,27 +1509,40 @@
           pharmacy_status: 'pending',
           updated_at: new Date().toISOString()
         };
-        
+
         try {
           const { data, error } = await supabase
             .from('consultations')
             .update(consultationData)
             .eq('consultation_code', consultationCode)
             .select();
-            
+
           if (error) throw error;
-          
+
           this.showSuccessMessage('Consultation completed! Sent to pharmacy.');
           document.querySelector('.modal-overlay.active')?.remove();
           this.loadProviderPatients();
-        } catch(err) {
-          alert('Error: ' + (err.message || err));
+        } catch (err) {
+          if (!this.isOnline() || !supabase) {
+            this.enqueueOperation({ type: 'update_consultation', payload: { consultation_code: consultationCode, updates: consultationData } });
+            this.showSuccessMessage('Consultation saved locally — will sync when online.');
+            document.querySelector('.modal-overlay.active')?.remove();
+            this.loadProviderPatients();
+          } else {
+            alert('Error: ' + (err.message || err));
+          }
         }
       }
 
       async loadPharmacyPatients() {
+        if (!supabase) {
+          console.warn('Supabase client not available — cannot load pharmacy patients');
+          const tbody = document.getElementById('pharmacy-patients-tbody');
+          if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Offline — data will load when online</td></tr>';
+          return;
+        }
         const today = new Date().toISOString().split('T')[0];
-        
+
         try {
           const { data, error } = await supabase
             .from('consultations')
@@ -1185,11 +1559,11 @@
             `)
             .eq('consultation_date', today)
             .eq('status', 'awaiting_pharmacy');
-            
+
           if (error) throw error;
-          
+
           this.renderPharmacyPatients(data);
-        } catch(err) {
+        } catch (err) {
           console.error('Error loading pharmacy patients:', err);
         }
       }
@@ -1226,17 +1600,29 @@
             })
             .eq('consultation_code', consultationCode)
             .select();
-            
+
           if (error) throw error;
-          
+
           this.showSuccessMessage('Medications dispensed! Consultation completed.');
           this.loadPharmacyPatients();
-        } catch(err) {
-          alert('Error: ' + (err.message || err));
+        } catch (err) {
+          if (!this.isOnline() || !supabase) {
+            this.enqueueOperation({ type: 'dispense', payload: { pharmacy_status: 'dispensed', status: 'completed', updated_at: new Date().toISOString() }, meta: { consultation_code: consultationCode } });
+            this.showSuccessMessage('Dispense recorded locally — will sync when online.');
+            this.loadPharmacyPatients();
+          } else {
+            alert('Error: ' + (err.message || err));
+          }
         }
       }
 
       async loadAdminPatients() {
+        if (!supabase) {
+          console.warn('Supabase client not available — cannot load admin patients');
+          const tbody = document.getElementById('admin-patients-tbody');
+          if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Offline — data will load when online</td></tr>';
+          return;
+        }
         try {
           const { data, error } = await supabase
             .from('patients')
@@ -1253,11 +1639,11 @@
               )
             `)
             .order('registered_date', { ascending: false });
-            
+
           if (error) throw error;
-          
+
           this.renderAdminPatients(data);
-        } catch(err) {
+        } catch (err) {
           console.error('Error loading admin patients:', err);
         }
       }
@@ -1272,7 +1658,7 @@
               const consultDate = new Date(c.consultation_date);
               return consultDate.getMonth() === thisMonth;
             }).length;
-            
+
             return `
               <tr>
                 <td>${patient.patient_code}</td>
@@ -1325,7 +1711,7 @@
             </div>
           </div>
         `;
-        
+
         this.loadPatientsForScheduling();
       }
 
@@ -1336,9 +1722,9 @@
             .from('patients')
             .select('patient_code, first_name, last_name, chronic_type')
             .eq('status', 'active');
-            
+
           if (error) throw error;
-          
+
           const container = document.getElementById('patients-to-schedule');
           if (data && data.length > 0) {
             container.innerHTML = `
@@ -1354,7 +1740,7 @@
           } else {
             container.innerHTML = '<p>No active patients found</p>';
           }
-        } catch(err) {
+        } catch (err) {
           console.error('Error loading patients for scheduling:', err);
         }
       }
@@ -1365,6 +1751,24 @@
       }
 
       // Utility methods
+      async testApiConnection() {
+        if (!supabase) {
+          this.showError('api-test', 'Supabase client not configured. Check `/supabase/config.js` or keys in `index.html`.');
+          return false;
+        }
+
+        try {
+          // simple lightweight query to test connectivity
+          const { data, error } = await supabase.from('profiles').select('id').limit(1);
+          if (error) throw error;
+          this.showSuccessMessage('API reachable — test query succeeded');
+          return true;
+        } catch (e) {
+          this.showError('api-test', 'API test failed: ' + (e.message || e));
+          return false;
+        }
+      }
+
       showError(elementId, message) {
         const errorElement = document.getElementById(elementId);
         errorElement.innerHTML = `<div class="error-message">${message}</div>`;
@@ -1381,9 +1785,9 @@
         successDiv.style.right = '20px';
         successDiv.style.zIndex = '1000';
         successDiv.style.maxWidth = '300px';
-        
+
         document.body.appendChild(successDiv);
-        
+
         // Remove after 5 seconds
         setTimeout(() => {
           document.body.removeChild(successDiv);
@@ -1394,66 +1798,84 @@
         try {
           const { error } = await supabase.auth.signOut();
           if (error) throw error;
-          
+
           localStorage.removeItem('telemed_role');
           this.currentRole = null;
           this.currentUser = null;
-          document.getElementById('logout-btn').style.display = 'none';
+          const logoutBtnEl = document.getElementById('logout-btn');
+          if (logoutBtnEl) logoutBtnEl.style.display = 'none';
+          const dashBtn = document.getElementById('dashboard-btn');
+          if (dashBtn) dashBtn.style.display = 'none';
           this.showSuccessMessage('Logged out successfully');
           this.showWelcomePage();
-        } catch(err) {
+        } catch (err) {
           console.error('Logout error:', err);
         }
       }
     }
 
     const patientManager = new PatientManager();
-    
+
     // Check for existing session on page load
-    window.addEventListener('load', async ()=>{
-      // Check if user is already logged in
-      const { data } = await supabase.auth.getSession();
-      if (data.session) {
-        const userId = data.session.user.id;
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('role')
-          .eq('id', userId)
-          .single();
-          
-        if (profile) {
-          localStorage.setItem('telemed_role', profile.role);
-          patientManager.currentRole = profile.role;
-          patientManager.currentUser = data.session.user;
-          document.getElementById('logout-btn').style.display = 'block';
-          patientManager.loadDashboard();
-        } else {
+    window.addEventListener('load', async () => {
+      // If supabase client isn't initialized, show welcome page and attempt to process queued ops when online
+      if (!supabase) {
+        patientManager.showWelcomePage();
+        // try processing queue later when online
+        patientManager.processQueue();
+      } else {
+        try {
+          const { data } = await supabase.auth.getSession();
+          if (data && data.session) {
+            const userId = data.session.user.id;
+            const { data: profile } = await supabase
+              .from('profiles')
+              .select('role')
+              .eq('id', userId)
+              .single();
+
+            if (profile) {
+              localStorage.setItem('telemed_role', profile.role);
+              patientManager.currentRole = profile.role;
+              patientManager.currentUser = data.session.user;
+              document.getElementById('logout-btn').style.display = 'block';
+              patientManager.loadDashboard();
+            } else {
+              patientManager.showWelcomePage();
+            }
+          } else {
+            patientManager.showWelcomePage();
+          }
+        } catch (e) {
+          console.error('Session check failed', e);
           patientManager.showWelcomePage();
         }
-      } else {
-        patientManager.showWelcomePage();
+        // Try to sync any queued offline operations now that supabase exists
+        patientManager.processQueue();
       }
-      
+
       // Set up event listeners
-      const dashBtn = document.getElementById('dashboard-btn'); 
-      if (dashBtn) dashBtn.addEventListener('click', ()=>{ 
+      const dashBtn = document.getElementById('dashboard-btn');
+      if (dashBtn) dashBtn.addEventListener('click', () => {
         if (patientManager.currentRole) {
           patientManager.loadDashboard();
         } else {
           alert('Please sign in to access the dashboard');
         }
       });
-      
-      const headerAction = document.getElementById('header-action'); 
-      if (headerAction) headerAction.addEventListener('click', ()=>{ 
-        patientManager.showWelcomePage(); 
-        window.scrollTo({ top: document.getElementById('content').offsetTop, behavior: 'smooth' }); 
+
+      const headerAction = document.getElementById('header-action');
+      if (headerAction) headerAction.addEventListener('click', () => {
+        patientManager.showWelcomePage();
+        window.scrollTo({ top: document.getElementById('content').offsetTop, behavior: 'smooth' });
       });
-      
+
+      // API test button removed — no event wiring needed
+
       const logoutBtn = document.getElementById('logout-btn');
       if (logoutBtn) logoutBtn.addEventListener('click', () => patientManager.logout());
       // Modal close behavior: close when clicking overlay or close button, or pressing Escape
-      (function setupModalCloseBehavior(){
+      (function setupModalCloseBehavior() {
         document.addEventListener('click', (e) => {
           if (!e.target) return;
           if (e.target.closest && e.target.closest('.modal-close')) {
@@ -1473,4 +1895,5 @@
     });
   </script>
 </body>
+
 </html>
